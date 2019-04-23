@@ -1,0 +1,51 @@
+#1环境安装
+python -m pip install django
+python -m pip install django-apscheduler
+
+#2cmd创建项目
+#django-admin startproject 项目名称
+django-admin startproject seedata
+
+
+#3进入pycharm、terminal输入
+python manage.py startapp seedata
+
+
+#4settings注册，INSTALLED_APPS添加'seedata'
+
+
+
+#5seedata件夹下models.py编写模型，对应数据库中的数据表
+class Data(modes.Model):
+
+#6admin.py注册
+from .models import Data
+admin.site.register(Data)
+
+#7terminal命令将模型变成数据库
+python manage.py makemigrations
+
+#8terminal创建超级管理员、输入邮箱、密码
+python manage.py createsuperuser
+
+#9urls.py注册渲染函数
+views.py编写函数render_html并到urls.py注册
+from data.views import render_html
+urlpatterns=[
+    url(r'^$', render_html),
+    url(r'^api/post_data/$', post_data),
+]
+
+#10data目录下新建templates文件夹，放入data.html
+
+#11data.html写入chart.render|safe
+            <div class="col-md-8" style="width: 100%;height: 530px;">
+                {{ chart.render|safe }}
+            </div>
+
+#12views.py渲染函数编写
+import pygal
+
+settings注释# 'django.middleware.csrf.CsrfViewMiddleware',
+
+python manage.py runserver 0.0.0.0:8000
