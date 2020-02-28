@@ -24,6 +24,7 @@ admin.site.register(Data)
 
 #7terminal命令将模型变成数据库
 python manage.py makemigrations
+python manage.py migrate
 
 #8terminal创建超级管理员、输入邮箱、密码
 python manage.py createsuperuser
