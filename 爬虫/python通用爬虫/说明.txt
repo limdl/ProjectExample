@@ -1,0 +1,3 @@
+generalspider.py 为网页采集通用爬虫，实现统一字段、翻页采集
+
+调用generalspider.py继承对应的基础爬虫类、json类、selenium类，设置数据字段、翻页等的xpath，实现不同网页结构的快速采集
